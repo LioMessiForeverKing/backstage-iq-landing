@@ -2,6 +2,9 @@ import Link from "next/link"
 import Image from "next/image"
 import { Music, BarChart2, MapPin, TrendingUp } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { AnimatedSection } from "@/components/AnimatedSection"
+import { ArtistTestimonial } from "@/components/ArtistTestimonial"
+import { FeatureRevealSection } from "@/components/FeatureRevealSection"
 
 export default function LandingPage() {
   // Replace with your actual Google Form URL
@@ -18,7 +21,7 @@ export default function LandingPage() {
       </header>
 
       {/* Hero Section */}
-      <section className="container mx-auto py-16 md:py-24 px-4">
+      <AnimatedSection className="container mx-auto py-24 px-4" animation="fadeIn" triggerOnScroll={false} id="hero-section">
         <div className="max-w-3xl mx-auto text-center space-y-6">
           <div className="inline-block px-3 py-1 rounded-full bg-purple-500/20 text-purple-400 text-sm font-medium mb-4">
             Beta Access
@@ -38,7 +41,10 @@ export default function LandingPage() {
             </Link>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
+
+      {/* Artist Testimonial */}
+      <ArtistTestimonial />
 
       {/* Audio Waveform Divider */}
       <div className="py-8 flex justify-center">
@@ -57,10 +63,12 @@ export default function LandingPage() {
       </div>
 
       {/* How It Works */}
-      <section className="container mx-auto py-16 px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">How It Works</h2>
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          <div className="bg-zinc-800/50 p-8 rounded-xl text-center">
+      <section className="container mx-auto py-24 px-4">
+        <AnimatedSection className="mb-16" id="how-it-works-title">
+          <h2 className="text-3xl md:text-4xl font-bold text-center">How It Works</h2>
+        </AnimatedSection>
+        <AnimatedSection className="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto" animation="staggerFadeIn" id="how-it-works-cards">
+          <div className="bg-zinc-800/50 p-8 rounded-xl text-center flex-1">
             <div className="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
               <Music className="h-8 w-8 text-purple-500" />
             </div>
@@ -68,7 +76,7 @@ export default function LandingPage() {
             <p className="text-zinc-300">Connect your Spotify, TikTok, YouTube, Instagram.</p>
           </div>
 
-          <div className="bg-zinc-800/50 p-8 rounded-xl text-center">
+          <div className="bg-zinc-800/50 p-8 rounded-xl text-center flex-1">
             <div className="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
               <MapPin className="h-8 w-8 text-purple-500" />
             </div>
@@ -76,48 +84,29 @@ export default function LandingPage() {
             <p className="text-zinc-300">See what's growing, what's dying, and what to drop next.</p>
           </div>
 
-          <div className="bg-zinc-800/50 p-8 rounded-xl text-center">
+          <div className="bg-zinc-800/50 p-8 rounded-xl text-center flex-1">
             <div className="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
               <TrendingUp className="h-8 w-8 text-purple-500" />
             </div>
             <h3 className="text-xl font-bold mb-3">Turn Insights Into Action</h3>
             <p className="text-zinc-300">Drop songs, plan tours, go viral—strategically.</p>
           </div>
-        </div>
+        </AnimatedSection>
       </section>
-
-      {/* Mockup Section */}
-      <section className="container mx-auto py-16 px-4">
-        <div className="max-w-5xl mx-auto">
-          <div className="bg-zinc-800/30 rounded-xl p-4 md:p-8 overflow-hidden">
-            <div className="relative h-[400px] md:h-[500px] rounded-lg overflow-hidden">
-              <Image
-                src="/placeholder.svg?height=500&width=1000"
-                alt="Backstage IQ Dashboard"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 to-transparent opacity-70"></div>
-              <div className="absolute bottom-0 left-0 p-6">
-                <h3 className="text-2xl font-bold mb-2">Fan Heatmap + Platform Tracker</h3>
-                <p className="text-zinc-300 max-w-md">
-                  See exactly where your audience is growing and which platforms are driving your success.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Feature Reveal Section */}
+      <FeatureRevealSection googleFormUrl={googleFormUrl} />
 
       {/* Problems & Solutions Section */}
-      <section className="container mx-auto py-16 px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-          🎶 What Problems Do Artists Have — And How We're Solving Them 🎶
-        </h2>
-        <div className="max-w-5xl mx-auto space-y-8 mt-12">
+      <section className="container mx-auto py-24 px-4">
+        <AnimatedSection className="mb-4" id="problems-title">
+          <h2 className="text-3xl md:text-4xl font-bold text-center">
+            🎶 What Problems Do Artists Have — And How We're Solving Them 🎶
+          </h2>
+        </AnimatedSection>
+        <AnimatedSection className="container max-w-5xl mx-auto space-y-12" animation="staggerFadeIn" id="problems-cards">
           {/* Problem 1 */}
-          <div className="bg-zinc-800/30 p-8 rounded-xl">
-            <div className="flex flex-col md:flex-row gap-6">
+          <div className="bg-zinc-800/30 p-10 rounded-xl flex-1">
+            <div className="flex flex-col md:flex-row gap-8 items-stretch flex-1">
               <div className="md:w-1/2">
                 <h3 className="text-xl font-bold flex items-center gap-2 mb-3">
                   <span className="text-2xl">🎯</span> "I don't know where my fans actually are."
@@ -137,8 +126,8 @@ export default function LandingPage() {
           </div>
 
           {/* Problem 2 */}
-          <div className="bg-zinc-800/30 p-8 rounded-xl">
-            <div className="flex flex-col md:flex-row gap-6">
+          <div className="bg-zinc-800/30 p-10 rounded-xl flex-1">
+            <div className="flex flex-col md:flex-row gap-8 items-stretch flex-1">
               <div className="md:w-1/2">
                 <h3 className="text-xl font-bold flex items-center gap-2 mb-3">
                   <span className="text-2xl">🚀</span> "Some songs blow up, and I find out too late."
@@ -156,8 +145,8 @@ export default function LandingPage() {
           </div>
 
           {/* Problem 3 */}
-          <div className="bg-zinc-800/30 p-8 rounded-xl">
-            <div className="flex flex-col md:flex-row gap-6">
+          <div className="bg-zinc-800/30 p-10 rounded-xl flex-1">
+            <div className="flex flex-col md:flex-row gap-8 items-stretch flex-1">
               <div className="md:w-1/2">
                 <h3 className="text-xl font-bold flex items-center gap-2 mb-3">
                   <span className="text-2xl">⏱️</span> "I waste hours checking 5 platforms every week."
@@ -177,8 +166,8 @@ export default function LandingPage() {
           </div>
 
           {/* Problem 4 */}
-          <div className="bg-zinc-800/30 p-8 rounded-xl">
-            <div className="flex flex-col md:flex-row gap-6">
+          <div className="bg-zinc-800/30 p-10 rounded-xl flex-1">
+            <div className="flex flex-col md:flex-row gap-8 items-stretch flex-1">
               <div className="md:w-1/2">
                 <h3 className="text-xl font-bold flex items-center gap-2 mb-3">
                   <span className="text-2xl">💸</span> "The tools out there are made for labels—not artists."
@@ -197,8 +186,8 @@ export default function LandingPage() {
           </div>
 
           {/* Problem 5 */}
-          <div className="bg-zinc-800/30 p-8 rounded-xl">
-            <div className="flex flex-col md:flex-row gap-6">
+          <div className="bg-zinc-800/30 p-10 rounded-xl flex-1">
+            <div className="flex flex-col md:flex-row gap-8 items-stretch flex-1">
               <div className="md:w-1/2">
                 <h3 className="text-xl font-bold flex items-center gap-2 mb-3">
                   <span className="text-2xl">🎤</span> "I see numbers, but I don't know what to do with them."
@@ -213,22 +202,24 @@ export default function LandingPage() {
               </div>
             </div>
           </div>
-        </div>
+        </AnimatedSection>
       </section>
 
       {/* CTA Section */}
-      <section className="container mx-auto py-16 md:py-24 px-4">
-        <div className="max-w-3xl mx-auto text-center space-y-8 bg-gradient-to-r from-purple-900/40 to-blue-900/40 p-12 rounded-2xl">
-          <BarChart2 className="h-16 w-16 text-purple-500 mx-auto" />
-          <h2 className="text-3xl md:text-4xl font-bold">Built for artists. Not for spreadsheets.</h2>
-          <div className="pt-4">
-            <Link href={googleFormUrl} target="_blank" rel="noopener noreferrer">
-              <Button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-6 rounded-full text-lg">
-                Get Early Access
-              </Button>
-            </Link>
+      <section className="container mx-auto py-24 px-4">
+        <AnimatedSection className="max-w-3xl mx-auto" animation="scaleIn" id="cta-section">
+          <div className="text-center space-y-8 bg-gradient-to-r from-purple-900/40 to-blue-900/40 p-12 rounded-2xl">
+            <BarChart2 className="h-16 w-16 text-purple-500 mx-auto" />
+            <h2 className="text-3xl md:text-4xl font-bold">Built for artists. Not for spreadsheets.</h2>
+            <div className="pt-4">
+              <Link href={googleFormUrl} target="_blank" rel="noopener noreferrer">
+                <Button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-6 rounded-full text-lg">
+                  Get Early Access
+                </Button>
+              </Link>
+            </div>
           </div>
-        </div>
+        </AnimatedSection>
       </section>
 
       {/* Footer */}
