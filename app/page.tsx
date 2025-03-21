@@ -8,7 +8,7 @@ import { FeatureRevealSection } from "@/components/FeatureRevealSection"
 
 export default function LandingPage() {
   // Replace with your actual Google Form URL
-  const googleFormUrl = "https://forms.gle/yourFormLinkHere"
+  const googleFormUrl = "https://forms.gle/uTS634LL9HX125f66"
 
   return (
     <div className="min-h-screen bg-zinc-900 text-white">
